@@ -1,50 +1,76 @@
-# Welcome to your Expo app 👋
+# FlowPDF 📄🌊
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+FlowPDF is a modern, high-performance React Native mobile application built with Expo to seamlessly view and manage your PDF files. With a clean UI, scoped storage access, and robust PDF rendering, FlowPDF gives you an exceptional reading experience directly on your device.
 
-## Get started
+## ✨ Features
 
-1. Install dependencies
+- **Folder Selection & File System Access**: Browse your device's local directories and select folders to scan for PDFs using Android's native Storage Access Framework.
+- **High-Performance PDF Rendering**: Built with `react-native-pdf-jsi` for lightning-fast, smooth PDF rendering and interactions.
+- **Modern Navigation**: Powered by Expo Router for native-feeling, file-based routing.
+- **Fast Lists**: Implements `@shopify/flash-list` for highly performant and smooth virtualization of large lists of local files.
+- **State Management**: Uses `zustand` combined with Async Storage to persist your configuration (like root folder preferences) across app launches.
 
+## 🛠️ Tech Stack
+
+- **Framework**: [React Native](https://reactnative.dev/) & [Expo](https://expo.dev/) (SDK ~54.0)
+- **Routing**: [Expo Router](https://docs.expo.dev/router/introduction/)
+- **PDF Engine**: [`react-native-pdf-jsi`](https://github.com/react-native-pdf-jsi/react-native-pdf-jsi)
+- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
+- **File System**: `expo-file-system`, `expo-document-picker`
+- **Lists**: `@shopify/flash-list`
+- **UI & Icons**: `@expo/vector-icons`, `@react-native-vector-icons`
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+You need to have Node.js installed along with the Expo CLI. Since FlowPDF utilizes custom native code (for advanced PDF rendering and extensive file system permissions), it must be run using an **Expo Development Build**. It will not run using the standard Expo Go app.
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/floatPDF.git
+   cd floatPDF
+   ```
+
+2. Install dependencies:
    ```bash
    npm install
    ```
 
-2. Start the app
+### Running on a Device
 
-   ```bash
-   npx expo start
-   ```
+Run a clean pre-build and compile the app for your respective platform:
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
+**To run on Android**:
 ```bash
-npm run reset-project
+npx expo run:android
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+**To run on iOS**:
+```bash
+npx expo run:ios
+```
 
-## Learn more
+## 📂 Project Structure
 
-To learn more about developing your project with Expo, look at the following resources:
+```text
+├── app/                  # Expo Router views and screens (e.g., index, PdfScreen)
+├── components/           # Reusable UI components
+│   ├── Folders/          # Folder picking and file system UI
+│   └── Pdf/              # PDF viewing elements (Viewer, Header, Modal)
+├── store/                # Zustand stores for global state (e.g., rootFolder auth)
+├── assets/               # Local assets like images and fonts
+├── android/              # Native Android project files
+└── package.json          # Dependencies and scripts
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## 🤝 Contributing
 
-## Join the community
+Contributions, issues, and feature requests are welcome!
+Feel free to check out the [issues page](https://github.com/your-username/floatPDF/issues) if you have any suggestions.
 
-Join our community of developers creating universal apps.
+## 📝 License
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+This project is licensed under the MIT License.
