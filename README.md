@@ -71,6 +71,3 @@ npx expo run:ios
 Contributions, issues, and feature requests are welcome!
 Feel free to check out the [issues page](https://github.com/your-username/floatPDF/issues) if you have any suggestions.
 
-## 📝 License
-
-This project is licensed under the MIT License.
