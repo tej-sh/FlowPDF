@@ -1,73 +1,222 @@
 # FlowPDF 📄🌊
 
-FlowPDF is a modern, high-performance React Native mobile application built with Expo to seamlessly view and manage your PDF files. With a clean UI, scoped storage access, and robust PDF rendering, FlowPDF gives you an exceptional reading experience directly on your device.
+FlowPDF is a React Native mobile application for organizing and reading local PDF files in dedicated workspaces.
+
+The app helps keep your PDFs organized by allowing you to select local folders, automatically find PDF files, and open them in a fast, focused reading environment.
 
 ## ✨ Features
 
-- **Folder Selection & File System Access**: Browse your device's local directories and select folders to scan for PDFs using Android's native Storage Access Framework.
-- **High-Performance PDF Rendering**: Built with `react-native-pdf-jsi` for lightning-fast, smooth PDF rendering and interactions.
-- **Modern Navigation**: Powered by Expo Router for native-feeling, file-based routing.
-- **Fast Lists**: Implements `@shopify/flash-list` for highly performant and smooth virtualization of large lists of local files.
-- **State Management**: Uses `zustand` combined with Async Storage to persist your configuration (like root folder preferences) across app launches.
+- **Local PDF organization**  
+  Select folders on your device and organize PDFs into dedicated workspaces.
+
+- **Folder-based file discovery**  
+  Browse local directories and scan selected folders for PDF documents.
+
+- **Fast PDF rendering**  
+  Uses `react-native-pdf-jsi` for smooth PDF viewing and interaction.
+
+- **Modern navigation**  
+  Uses Expo Router for file-based navigation and native-feeling screen transitions.
+
+- **Performant lists**  
+  Uses Shopify FlashList for efficient rendering of large PDF collections.
+
+- **Persistent preferences**  
+  Uses Zustand and AsyncStorage to remember selected folders and app settings.
+
+- **Mobile-first design**  
+  Built for Android and iOS with a clean, focused reading experience.
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [React Native](https://reactnative.dev/) & [Expo](https://expo.dev/) (SDK ~54.0)
-- **Routing**: [Expo Router](https://docs.expo.dev/router/introduction/)
-- **PDF Engine**: [`react-native-pdf-jsi`](https://github.com/react-native-pdf-jsi/react-native-pdf-jsi)
-- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
-- **File System**: `expo-file-system`, `expo-document-picker`
-- **Lists**: `@shopify/flash-list`
-- **UI & Icons**: `@expo/vector-icons`, `@react-native-vector-icons`
+- **Language:** TypeScript
+- **Framework:** React Native
+- **Platform:** Expo SDK 54
+- **Navigation:** Expo Router
+- **PDF Rendering:** `react-native-pdf-jsi`
+- **State Management:** Zustand
+- **Storage:** AsyncStorage
+- **File Access:** Expo File System and Expo Document Picker
+- **Lists:** Shopify FlashList
+- **Icons:** Expo Vector Icons and React Native Vector Icons
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-You need to have Node.js installed along with the Expo CLI. Since FlowPDF utilizes custom native code (for advanced PDF rendering and extensive file system permissions), it must be run using an **Expo Development Build**. It will not run using the standard Expo Go app.
+Install the following tools before running the project:
 
-### Installation
+- Node.js
+- npm
+- Android Studio for Android development
+- Xcode for iOS development on macOS
+- Expo development tools
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/floatPDF.git
-   cd floatPDF
-   ```
+Because FlowPDF uses native PDF rendering and device filesystem access, development builds are recommended instead of relying only on Expo Go.
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+## Installation
 
-### Running on a Device
+Clone the repository:
 
-Run a clean pre-build and compile the app for your respective platform:
-
-**To run on Android**:
 ```bash
-npx expo run:android
+git clone https://github.com/tej-sh/FlowPDF.git
 ```
 
-**To run on iOS**:
+Move into the project directory:
+
 ```bash
-npx expo run:ios
+cd FlowPDF
 ```
 
-## 📂 Project Structure
+Install dependencies:
+
+```bash
+npm install
+```
+
+## Running the Application
+
+### Start the Expo development server
+
+```bash
+npm start
+```
+
+### Run on Android
+
+```bash
+npm run android
+```
+
+### Run on iOS
+
+```bash
+npm run ios
+```
+
+### Run on the web
+
+```bash
+npm run web
+```
+
+### Run linting
+
+```bash
+npm run lint
+```
+
+## Android Setup
+
+To run FlowPDF on Android:
+
+1. Install Android Studio.
+2. Install an Android SDK and create an emulator, or connect a physical Android device.
+3. Enable USB debugging if using a physical device.
+4. Run:
+
+```bash
+npm run android
+```
+
+The project includes Android permissions for local file access, downloads, and network state detection.
+
+## iOS Setup
+
+To run FlowPDF on iOS:
+
+1. Use macOS with Xcode installed.
+2. Install CocoaPods if required.
+3. Start an iOS simulator or connect a physical device.
+4. Run:
+
+```bash
+npm run ios
+```
+
+## Project Structure
 
 ```text
-├── app/                  # Expo Router views and screens (e.g., index, PdfScreen)
-├── components/           # Reusable UI components
-│   ├── Folders/          # Folder picking and file system UI
-│   └── Pdf/              # PDF viewing elements (Viewer, Header, Modal)
-├── store/                # Zustand stores for global state (e.g., rootFolder auth)
-├── assets/               # Local assets like images and fonts
-├── android/              # Native Android project files
-└── package.json          # Dependencies and scripts
+FlowPDF/
+├── app/                    # Expo Router screens and routes
+├── components/             # Reusable UI components
+│   ├── Folders/            # Folder selection and file browsing UI
+│   └── Pdf/                # PDF viewer components and controls
+├── store/                  # Zustand stores and persistent app state
+├── assets/                 # Images, icons, fonts, and other assets
+├── android/                # Native Android project files
+├── scripts/                # Project utility scripts
+├── app.json                # Expo configuration
+├── package.json            # Project dependencies and scripts
+└── README.md               # Project documentation
 ```
 
-## 🤝 Contributing
+## How It Works
 
-Contributions, issues, and feature requests are welcome!
-Feel free to check out the [issues page](https://github.com/your-username/floatPDF/issues) if you have any suggestions.
+1. Select a folder from your device.
+2. FlowPDF scans the folder for PDF files.
+3. Available PDFs are displayed in an organized list.
+4. Select a PDF to open it in the built-in viewer.
+5. Your folder preferences are saved for future app sessions.
 
+## Important Notes
+
+- FlowPDF works with locally stored PDF files.
+- File access behavior may vary between Android and iOS.
+- Native PDF functionality may require a development build.
+- The application does not upload your PDFs to a server.
+- Make sure your device grants the required file access permissions.
+- Some platform-specific features may not be fully available on the web.
+
+## Available Scripts
+
+| Command | Description |
+|---|---|
+| `npm start` | Start the Expo development server |
+| `npm run android` | Build and run the app on Android |
+| `npm run ios` | Build and run the app on iOS |
+| `npm run web` | Start the web version |
+| `npm run lint` | Run ESLint |
+| `npm run reset-project` | Reset the starter project structure |
+
+## Contributing
+
+Contributions, issues, and feature requests are welcome.
+
+To contribute:
+
+1. Fork the repository.
+2. Create a new branch:
+
+```bash
+git checkout -b feature/your-feature-name
+```
+
+3. Make your changes.
+4. Run the linter:
+
+```bash
+npm run lint
+```
+
+5. Commit your changes:
+
+```bash
+git commit -m "Add your change description"
+```
+
+6. Push your branch:
+
+```bash
+git push origin feature/your-feature-name
+```
+
+7. Open a pull request.
+
+For bugs or feature requests, visit the [Issues page](https://github.com/tej-sh/FlowPDF/issues).
+
+## License
+
+This project is licensed under the MIT License.
+
+See the [LICENSE](LICENSE) file for details.
